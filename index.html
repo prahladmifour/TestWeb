@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script>
+
+$.ajax({
+        url: 'https://reqres.in/api/users',
+        type: 'GET',
+        success: function(response) {
+
+            var synth = window.speechSynthesis;
+synth.onvoiceschanged = function() {
+
+  var sayThis = new SpeechSynthesisUtterance('Welcome Shital');
+  sayThis.onend = function(event) {
+    console.log('SpeechSynthesisUtterance.onend');
+  }
+ 
+  sayThis.onerror = function(event) {
+    console.error('SpeechSynthesisUtterance.onerror');
+  }
+
+   
+  
+  sayThis.voice = window.speechSynthesis.getVoices()[5];
+  sayThis.pitch = 1;
+  sayThis.rate = 1;
+  synth.speak(sayThis);
+}
+        }
+    });
+    </script>
+<title>Page Title</title>
+</head>
+<body>
+prahlad makwana testing
+<div id='content'/>
+</body>
+</html>
